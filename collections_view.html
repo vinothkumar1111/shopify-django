@@ -1,0 +1,35 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<section class="bg-light py-4 my-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mb-3">{{name}} products</h4>
+                <hr style="border-color: #b8bfc2;">
+            </div>
+            {% for item in products %}
+    
+            <div class="col-md-4 col-mg-3">
+                <div class="card my-3">
+                    <img src="{{item.product_image.url}}" class="card-image-top"  alt="categories" style="height: 200px;">
+                    <a href="{% url 'product_details' name item.name %}">
+                         <hr>
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">{{item.name}}</h5>
+                        <p class="card-text">
+                            <span class="float-star old_price text-danger"><s>Rs:{{item.original_price| stringformat:'d'}}</s></span>
+                            <span class="float-end text-success">Rs:{{item.selling_price|stringformat:'d'}}</span>
+
+                        </p>
+                      
+                    </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+    
+{% endblock content %}
